@@ -1,0 +1,38 @@
+#include <vector>
+#define ll long long
+using namespace std;
+
+// list of prime less than n : Sieve of Eratosthenes
+vector<ll> primeList (ll n){
+    vector<bool> isP(n+1, true);
+    isP[0] = false, isP[1] = false;
+    vector<ll> res;
+    if (n < 2) return res;
+    for(ll i = 2; i * i <= n; i++){
+        if(isP[i]){
+            for(ll j = i; j <= n; j += i){
+                isP[j] = false;
+            }
+        }
+    }
+    for(ll i = 0; i <= n; i++){
+        if(isP[i]) res.push_back(i);
+    }
+    return res;
+}
+
+// list of prime and its number in the number n
+vector<pair<ll, ll>> primeNumList (ll n){
+    vector<pair<ll, ll>> res;
+    ll N = n;
+    for(ll i = 2; i * i <= n; i++){
+        ll divnum = 0;
+        while(N % i == 0){
+            N /= i;
+            divnum++;
+        }
+        if(divnum > 0) res.push_back({i, divnum});
+    }
+    if(N > 1) res.push_back({N, 1});
+    return res;
+}
