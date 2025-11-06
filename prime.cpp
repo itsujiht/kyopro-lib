@@ -36,3 +36,16 @@ vector<pair<ll, ll>> primeNumList (ll n){
     if(N > 1) res.push_back({N, 1});
     return res;
 }
+
+vector<ll> divisorList (ll n){
+    vector<ll> res = {1};
+    for(ll i = 2; i * i <= n; i++){
+        if(n%i == 0) res.push_back(i);
+    }
+    vector<ll> res2;
+    for(auto it = res.rbegin(); it != res.rend(); ++it){
+        if((*it)*(*it) != n) res2.push_back(n/(*it));
+    }
+    for(ll d: res2) res.push_back(d);
+    return res;
+}
