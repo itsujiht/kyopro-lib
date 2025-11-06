@@ -10,6 +10,7 @@
 #include <map>
 #include <queue>
 #include <deque>
+#include <functional>
 #define ll long long
 #define vi vector<int>
 #define pi pair<int, int>
@@ -18,8 +19,8 @@
 
 using namespace std;
 
-ll inf = (ll)1e+18;
-ll mod = 1000000007;
+constexpr ll inf = (ll)9e+18;
+constexpr ll mod = 1000000007;
 
 int main(){
     ios::sync_with_stdio(false);
