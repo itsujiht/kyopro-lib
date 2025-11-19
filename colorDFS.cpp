@@ -21,3 +21,18 @@ function<void(int)> dfs = [&](int v){
     }
     color[v] = 2;
 };
+
+// 部分木のサイズ取得
+vector<vector<ll>> g;
+vector<bool> visited;
+vector<ll> sz;
+
+void dfs(ll v) {
+    visited[v] = true;
+    sz[v] = 1;
+    for (ll nv : g[v]) {
+        if (visited[nv]) continue;
+        dfs(nv);
+        sz[v] += sz[nv];
+    }
+}
