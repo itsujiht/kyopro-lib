@@ -4,6 +4,7 @@ using namespace std;
 class UnionFind {
 public:
 	vector<int> par;
+	vector<int> size;
 
 	void init(int sz) {
 		par.resize(sz, -1);
@@ -17,6 +18,7 @@ public:
 		u = root(u); v = root(v);
 		if (u == v) return;
 		par[u] = v;
+		size[v] += size[u];
 	}
 	bool same(int u, int v) { //連結判定
 		if (root(u) == root(v)) return true;
